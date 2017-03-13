@@ -1,0 +1,94 @@
+{
+  "name": "es6-express-mongoose-passport-rest-api",
+  "version": "1.0.0",
+  "description": "Boilerplate for Node, ES6, Express, Mongoose and Passport",
+  "keywords": [
+    "homein"
+  ],
+  "author": "Samuel Tutton <samueltutton@gmail.com>",
+  "main": "./src/index.js",
+  "private": false,
+  "engines": {
+    "node": ">=7.0.0",
+    "npm": ">=3.0.0",
+    "yarn": ">=0.17.9"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon -w src --exec \"babel-node src --plugins add-module-exports --presets es2015,stage-0,stage-2\"",
+    "build": "babel src -s -D -d dist --plugins add-module-exports --presets es2015,stage-0,stage-2",
+    "start": "node dist",
+    "prestart": "npm run -s build",
+    "lint": "esw *.js src/server src/config --color",
+    "lint:watch": "yarn lint -- --watch",
+    "lint:fix": "eslint *.js src/server src/config --fix",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prepush": "yarn lint && yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tutts/es6-express-mongoose-passport-rest-api.git"
+  },
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "compression": "1.6.2",
+    "cookie-parser": "1.4.3",
+    "cors": "2.8.1",
+    "debug": "^2.4.5",
+    "express": "4.14.0",
+    "express-session": "^1.15.1",
+    "express-validation": "1.0.2",
+    "express-winston": "2.1.2",
+    "helmet": "3.1.0",
+    "http-status": "^0.2.0",
+    "joi": "10.2.2",
+    "jsonwebtoken": "7.1.9",
+    "method-override": "^2.3.5",
+    "mongoose": "4.7.6",
+    "morgan": "1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "winston": "2.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-core": "6.18.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-es2015": "6.16.0",
+    "babel-preset-stage-0": "6.16.0",
+    "babel-preset-stage-2": "6.16.0",
+    "eslint": "3.12.0",
+    "eslint-config-airbnb-base": "7.1.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jest": "^1.0.2",
+    "eslint-watch": "2.1.14",
+    "husky": "^0.13.2",
+    "jest": "^18.1.0",
+    "nodemon": "^1.11.0",
+    "supertest": "2.0.1"
+  },
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "stage-2"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(spec))\\.jsx?$"
+  },
+  "bugs": {
+    "url": "https://github.com/tutts/es6-express-mongoose-passport-rest-api/issues"
+  },
+  "homepage": "https://github.com/tutts/es6-express-mongoose-passport-rest-api/#readme"
+}
