@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import Joi from 'joi';
 
 export default {
   // POST /auth/register
@@ -15,4 +15,4 @@ export default {
       password: Joi.string().required(),
     },
   },
-}
+};
