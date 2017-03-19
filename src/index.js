@@ -19,7 +19,7 @@ mongoose.connect(config.db, {
 
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
-});
+})
 
 // print mongoose logs in dev env
 if (config.MONGOOSE_DEBUG) {
