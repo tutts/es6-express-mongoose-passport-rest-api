@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
-import httpStatus from 'http-status'
-import passportLocalMongoose from 'passport-local-mongoose'
-import APIError from '../helpers/APIError'
+import mongoose from 'mongoose';
+import httpStatus from 'http-status';
+import passportLocalMongoose from 'passport-local-mongoose';
+import APIError from '../helpers/APIError';
 
 /**
  * User Schema
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
   role: { type: String, enum: ['user', 'agent', 'admin'], default: 'user' },
   location: { type: mongoose.Schema.Types.ObjectId, ref: 'Location' },
   criteria: { type: mongoose.Schema.Types.ObjectId, ref: 'Location' },
-})
+});
 
 /**
  * Add your
@@ -25,8 +25,7 @@ const UserSchema = new mongoose.Schema({
 /**
  * Methods
  */
-UserSchema.method({
-})
+UserSchema.method({});
 
 /**
  * Statics
@@ -38,17 +37,13 @@ UserSchema.statics = {
    * @returns {Promise<User, APIError>}
    */
   get(id) {
-    return this.findById(id)
-      .populate('location')
-      .populate('criteria')
-      .exec()
-      .then(user => {
-        if (user) {
-          return user
-        }
-        const err = new APIError('No such user exists!', httpStatus.NOT_FOUND)
-        return Promise.reject(err)
-      })
+    return this.findById(id).populate('location').populate('criteria').exec().then(user => {
+      if (user) {
+        return user;
+      }
+      const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
+      return Promise.reject(err);
+    });
   },
 
   /**
@@ -58,19 +53,13 @@ UserSchema.statics = {
    * @returns {Promise<User[]>}
    */
   list({ skip = 0, limit = 50 } = {}) {
-    return this.find()
-      .populate('location')
-      .populate('criteria')
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit)
-      .exec()
+    return this.find().populate('location').populate('criteria').sort({ createdAt: -1 }).skip(skip).limit(limit).exec();
   },
-}
+};
 
-UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 /**
  * @typedef User
  */
-export default mongoose.model('User', UserSchema)
+export default mongoose.model('User', UserSchema);
