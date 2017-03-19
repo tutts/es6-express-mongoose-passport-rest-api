@@ -15,7 +15,7 @@ mongoose.connect(config.db, {
       keepAlive: 1,
     },
   },
-});
+})
 
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.db}`);
