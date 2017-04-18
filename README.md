@@ -14,7 +14,6 @@ super easy and efficient to kick start.
 
 ### Developer tools
 - Jest
-- Eslint
 - Docker
 - Husky (Githooks)
 
@@ -73,7 +72,10 @@ yarn test
 yarn test:coverage
 ```
 
-Running lint
+Running lint **(deprecated)**
+
+** ESLint has now been removed in favour of Prettier. As of version 1.0.0, semi colons are now optional and disabled as
+default. **
 
 ```
 yarn lint
