@@ -3,4 +3,4 @@ export default {
   passportSecret: 'stayhungrystayfoolish',
   db: 'mongodb://localhost/my-api-production',
   port: 8080,
-};
+}
