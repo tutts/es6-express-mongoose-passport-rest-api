@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from 'joi'
 
 export default {
   // UPDATE /api/users/:userId
@@ -10,4 +10,4 @@ export default {
       userId: Joi.string().hex().required(),
     },
   },
-};
+}

@@ -1,7 +1,7 @@
-import httpStatus from 'http-status';
-import passport from 'passport';
-import APIError from '../helpers/APIError';
-import User from '../models/user.model';
+import httpStatus from 'http-status'
+import passport from 'passport'
+import APIError from '../helpers/APIError'
+import User from '../models/user.model'
 
 /**
  * Returns passport login response (cookie) when valid username and password is provided
@@ -10,7 +10,7 @@ import User from '../models/user.model';
  * @returns {*}
  */
 function login(req, res) {
-  return res.json(req.user);
+  return res.json(req.user)
 }
 
 /**
@@ -23,14 +23,14 @@ function login(req, res) {
 function register(req, res, next) {
   User.register(new User({ email: req.body.email }), req.body.password, (err, user) => {
     if (err) {
-      const error = new APIError('Authentication error', httpStatus.UNAUTHORIZED);
-      next(error);
+      const error = new APIError('Authentication error', httpStatus.UNAUTHORIZED)
+      next(error)
     }
 
     passport.authenticate('local')(req, res, () => {
-      res.json({ user });
-    });
-  });
+      res.json({ user })
+    })
+  })
 }
 
 /**
@@ -42,11 +42,11 @@ function register(req, res, next) {
  */
 function me(req, res, next) {
   if (!req.user) {
-    const error = new APIError('Authentication error', httpStatus.UNAUTHORIZED);
-    next(error);
+    const error = new APIError('Authentication error', httpStatus.UNAUTHORIZED)
+    next(error)
   }
 
-  res.json(req.user);
+  res.json(req.user)
 }
 
 /**
@@ -58,11 +58,11 @@ function me(req, res, next) {
  */
 function checkAuth(req, res, next) {
   if (!req.user) {
-    const error = new APIError('Authentication error', httpStatus.UNAUTHORIZED);
-    next(error);
+    const error = new APIError('Authentication error', httpStatus.UNAUTHORIZED)
+    next(error)
   }
 
-  next();
+  next()
 }
 
-export default { login, register, me, checkAuth };
+export default { login, register, me, checkAuth }

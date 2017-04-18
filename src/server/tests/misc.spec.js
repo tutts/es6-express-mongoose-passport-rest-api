@@ -1,6 +1,6 @@
-import request from 'supertest';
-import httpStatus from 'http-status';
-import app from '../../index';
+import request from 'supertest'
+import httpStatus from 'http-status'
+import app from '../../index'
 
 describe('## Misc', () => {
   describe('# GET /api/health-check', () => {
@@ -9,12 +9,12 @@ describe('## Misc', () => {
         .get('/api/health-check')
         .expect(httpStatus.OK)
         .then(res => {
-          expect(res.text).toBe('OK');
-          done();
+          expect(res.text).toBe('OK')
+          done()
         })
-        .catch(done);
-    });
-  });
+        .catch(done)
+    })
+  })
 
   describe('# GET /api/404', () => {
     it('should return 404 status', done => {
@@ -22,12 +22,12 @@ describe('## Misc', () => {
         .get('/api/404')
         .expect(httpStatus.NOT_FOUND)
         .then(res => {
-          expect(res.body.message).toBe('Not Found');
-          done();
+          expect(res.body.message).toBe('Not Found')
+          done()
         })
-        .catch(done);
-    });
-  });
+        .catch(done)
+    })
+  })
 
   describe('# Error Handling', () => {
     it('should handle mongoose CastError - Cast to ObjectId failed', done => {
@@ -35,11 +35,11 @@ describe('## Misc', () => {
         .get('/api/users/56z787zzz67fc')
         .expect(httpStatus.INTERNAL_SERVER_ERROR)
         .then(res => {
-          expect(res.body.message).toBe('Internal Server Error');
-          done();
+          expect(res.body.message).toBe('Internal Server Error')
+          done()
         })
-        .catch(done);
-    });
+        .catch(done)
+    })
 
     // it('should handle express validation error - email is required', done => {
     //   request(app)
@@ -52,5 +52,5 @@ describe('## Misc', () => {
     //     })
     //     .catch(done)
     // })
-  });
-});
+  })
+})
