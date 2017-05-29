@@ -85,7 +85,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write",
+      "prettier --semi false --print-width 120 --single-quote --trailing-comma all --write",
       "git add"
     ]
   },
