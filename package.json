@@ -1,10 +1,8 @@
 {
   "name": "es6-express-mongoose-passport-rest-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Boilerplate for Node, ES6, Express, Mongoose and Passport",
-  "keywords": [
-    "homein"
-  ],
+  "keywords": ["homein"],
   "author": "Samuel Tutton <samueltutton@gmail.com>",
   "main": "./src/index.js",
   "private": false,
@@ -14,11 +12,13 @@
     "yarn": ">=0.17.9"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon -w src --exec \"babel-node src --plugins add-module-exports --presets es2015,stage-0,stage-2\"",
+    "dev":
+      "NODE_ENV=development nodemon -w src --exec \"babel-node src --plugins add-module-exports --presets es2015,stage-0,stage-2\"",
     "build": "babel src -s -D -d dist --plugins add-module-exports --presets es2015,stage-0,stage-2",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "prettier": "prettier --semi false --print-width 120 --single-quote --trailing-comma all --write \"{src,__{tests,mocks}__}/**/*.js\"",
+    "prettier":
+      "prettier --semi false --print-width 120 --single-quote --trailing-comma all --write \"{src,__{tests,mocks}__}/**/*.js\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "prepush": "yarn test",
@@ -66,28 +66,16 @@
   },
   "license": "MIT",
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "stage-2"
-    ],
-    "plugins": [
-      "add-module-exports"
-    ]
+    "presets": ["es2015", "stage-0", "stage-2"],
+    "plugins": ["add-module-exports"]
   },
   "jest": {
     "verbose": true,
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", "/dist/"],
     "testRegex": "(/__tests__/.*|(\\.|/)(spec))\\.jsx?$"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --semi false --print-width 120 --single-quote --trailing-comma all --write",
-      "git add"
-    ]
+    "*.js": ["prettier --semi false --print-width 120 --single-quote --trailing-comma all --write", "git add"]
   },
   "bugs": {
     "url": "https://github.com/tutts/es6-express-mongoose-passport-rest-api/issues"

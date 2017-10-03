@@ -11,8 +11,6 @@ const UserSchema = new mongoose.Schema({
   push: { type: String, unique: true },
   createdAt: { type: Date, default: Date.now },
   role: { type: String, enum: ['user', 'agent', 'admin'], default: 'user' },
-  location: { type: mongoose.Schema.Types.ObjectId, ref: 'Location' },
-  criteria: { type: mongoose.Schema.Types.ObjectId, ref: 'Location' },
 })
 
 /**
@@ -37,13 +35,15 @@ UserSchema.statics = {
    * @returns {Promise<User, APIError>}
    */
   get(id) {
-    return this.findById(id).populate('location').populate('criteria').exec().then(user => {
-      if (user) {
-        return user
-      }
-      const err = new APIError('No such user exists!', httpStatus.NOT_FOUND)
-      return Promise.reject(err)
-    })
+    return this.findById(id)
+      .exec()
+      .then(user => {
+        if (user) {
+          return user
+        }
+        const err = new APIError('No such user exists!', httpStatus.NOT_FOUND)
+        return Promise.reject(err)
+      })
   },
 
   /**
@@ -53,7 +53,11 @@ UserSchema.statics = {
    * @returns {Promise<User[]>}
    */
   list({ skip = 0, limit = 50 } = {}) {
-    return this.find().populate('location').populate('criteria').sort({ createdAt: -1 }).skip(skip).limit(limit).exec()
+    return this.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .exec()
   },
 }
 
